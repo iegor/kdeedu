@@ -47,6 +47,11 @@ KDE_SET_PREFIX
 dnl generate the config header
 AM_CONFIG_HEADER(config.h) dnl at the distribution this done
 
+AC_PROG_CC
+AC_PROG_CXX
+AC_EXEEXT
+AC_OBJEXT
+
 dnl Checks for programs.
 AC_CHECK_COMPILERS
 AC_ENABLE_SHARED(yes)
@@ -265,7 +270,7 @@ AC_DEFUN([REGINA_LIB_BOOST_PYTHON], [
     __regina_py_save_ldflags="$LDFLAGS"
     __regina_py_save_libs="$LIBS"
     __regina_py_ok=0
-    for pyver in python python2.5 python2.4 python2.3 python2.2; do
+    for pyver in python python2.7 python2.6 python2.5 python2.4 python2.3 python2.2; do
       for incdir in "/usr/include/$pyver" "/usr/local/include/$pyver" \
           "/usr/$pyver/include" "/usr/local/$pyver/include" \
           "$prefix/include/$pyver" "$prefix/$pyver/include"; do
@@ -290,7 +295,7 @@ AC_DEFUN([REGINA_LIB_BOOST_PYTHON], [
             AC_MSG_RESULT([yes])
 	
             # Check for -lpython.
-            for pylib in "$pyver" python python2.3 python2.2; do
+            for pylib in "$pyver" python python2.7 python2.6 python2.3 python2.2; do
               for pylibdir in "/usr/lib" "/usr/local/lib" "/usr/lib/$pyver/config" \
 		"/usr/local/lib/$pyver/config"; do
 		for extralibs in "" "-lpthread -lm -lutil -ldl"; do
